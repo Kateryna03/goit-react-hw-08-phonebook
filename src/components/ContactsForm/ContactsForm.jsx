@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
 
 function ContactsForm({ onSubmit }) {
   const [name, setName] = useState('');
@@ -87,7 +88,7 @@ function ContactsForm({ onSubmit }) {
   );
 }
 
-export default ContactsForm;
+export default connect()(ContactsForm);
 
 /////////CLASS///////////////////////////////////////////////////////
 // import React, { Component } from 'react';

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const Filter = ({ value, onChangeFilter }) => {
   return (
@@ -26,4 +27,4 @@ Filter.prototype = {
   onChangeFilter: PropTypes.func.isRequired,
 };
 
-export default Filter;
+export default connect()(Filter);

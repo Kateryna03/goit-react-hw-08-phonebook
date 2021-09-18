@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const ContactList = ({ contacts, handleDeleteContact }) => {
+const ContactList = ({ contacts, deleteContact }) => {
   return (
     <ul>
       {contacts.map(({ id, name, number }) => (
         <li key={id}>
           <p>{name}</p>
           <p>{number}</p>
-          <button type="button" onClick={() => handleDeleteContact(id)}>
+          <button type="button" onClick={() => deleteContact(id)}>
             delete contact
           </button>
         </li>
@@ -24,4 +25,4 @@ ContactList.prototype = {
   handleDeleteContact: PropTypes.func.isRequired,
   contacts: PropTypes.array.isRequired,
 };
-export default ContactList;
+export default connect()(ContactList);

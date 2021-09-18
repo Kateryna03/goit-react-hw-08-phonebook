@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import { useState } from 'react';
 import shortid from 'shortid';
 import './App.css';
+import { connect } from 'react-redux';
+import * as actions from '../redux/actions';
 import useLocalStorage from '../hooks/useLocalStorage';
 import ContactsForm from '../components/ContactsForm';
 import ContactList from '../components/ContactList';
@@ -179,5 +181,18 @@ function App() {
 //     );
 //   }
 // }
+const mapStateToProps = state => {
+  return {
+    value: state.contacts.itemsValue,
+  };
+};
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    handleSubmit: () => dispatch(actions.addContact()),
+    handleRemoveContact: () => dispatch(actions.deleteContact()),
+    //onChangeFilter: () => dispatch(),
+    onFilterName: () => dispatch(actions.filterContact),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
