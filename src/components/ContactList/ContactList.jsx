@@ -1,15 +1,33 @@
+import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const ContactList = ({ contacts, deleteContact }) => {
+import { deleteContact } from '../../redux/actions';
+
+const ContactList = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
+  console.log(contacts);
+  const filter = useSelector(state => state.filter);
+  const onDeleteContact = id => {
+    dispatch(deleteContact(id));
+  };
+
+  const filteredContacts = (contacts, filter) =>
+    contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase()),
+    );
+
+  const finishFilterContacts = filteredContacts(contacts, filter);
+  console.log('ОТФИЛЬТРОВАННЫЕ КОНТАКТЫ', finishFilterContacts);
   return (
     <ul>
-      {contacts.map(({ id, name, number }) => (
+      {finishFilterContacts.map(({ id, name, number }) => (
         <li key={id}>
           <p>{name}</p>
           <p>{number}</p>
-          <button type="button" onClick={() => deleteContact(id)}>
+          <button type="button" onClick={() => onDeleteContact(id)}>
             delete contact
           </button>
         </li>

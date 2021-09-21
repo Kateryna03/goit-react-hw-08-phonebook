@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 
-function ContactsForm({ onSubmit }) {
+import { addContact } from '../../redux/actions';
+
+function ContactsForm() {
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  // state = {
-  //   name: '',
-  //   number: '',
-  // };
 
   const handleChange = e => {
-    const { name, value } = e.currentTarget;
+    const { name, value } = e.target;
     switch (name) {
       case 'name':
         setName(value);
@@ -22,20 +22,33 @@ function ContactsForm({ onSubmit }) {
       default:
         return;
     }
-    //setName(value);
-    // console.log("VALUE:", e.currentTarget);
-    // console.log("NAME:", [name]);
+
+    console.log('VALUE:', e.currentTarget);
+    console.log('NAME:', [name]);
   };
 
+  const onAddContact = (name, number, id) => {
+    dispatch(addContact(name, number, id));
+  };
+
+  const alreadyExistsContact = name => {
+    return contacts.map(contact => contact.name).includes(name.toLowerCase());
+  };
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(name, number);
+
+    if (alreadyExistsContact(name)) {
+      alert(`${name} is already in contacts.`);
+      return;
+    }
+    onAddContact(name, number);
+
+    // onSubmit(name, number);
 
     reset();
   };
 
   const reset = () => {
-    // this.setState({ name: '', number: '' });
     setName('');
     setNumber('');
   };
@@ -49,7 +62,7 @@ function ContactsForm({ onSubmit }) {
         //     console.log(e.currentTarget);
         //   }}
       >
-        <label>
+        <label htmlFor="name">
           Name
           <input
             type="text"
@@ -62,7 +75,7 @@ function ContactsForm({ onSubmit }) {
             required
           />
         </label>
-        <label>
+        <label htmlFor="number">
           Number
           <input
             type="tel"
