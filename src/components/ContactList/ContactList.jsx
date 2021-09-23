@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+//import { connect } from 'react-redux';
 
 import { deleteContact } from '../../redux/actions';
 
@@ -43,4 +43,4 @@ ContactList.prototype = {
   handleDeleteContact: PropTypes.func.isRequired,
   contacts: PropTypes.array.isRequired,
 };
-export default connect()(ContactList);
+export default ContactList;

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addContact } from '../../redux/actions';
 
@@ -101,7 +101,7 @@ function ContactsForm() {
   );
 }
 
-export default connect()(ContactsForm);
+export default ContactsForm;
 
 /////////CLASS///////////////////////////////////////////////////////
 // import React, { Component } from 'react';

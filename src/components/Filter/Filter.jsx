@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+//import { connect } from 'react-redux';
 import { filterContacts } from '../../redux/actions';
 
 const Filter = () => {
@@ -39,4 +39,4 @@ Filter.prototype = {
   onChangeFilter: PropTypes.func.isRequired,
 };
 
-export default connect()(Filter);
+export default Filter;

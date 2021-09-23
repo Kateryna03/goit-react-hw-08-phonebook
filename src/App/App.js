@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 import './App.css';
 //import { connect } from 'react-redux';
 //import * as actions from '../redux/actions';
-//import useLocalStorage from '../hooks/useLocalStorage';
+import useLocalStorage from '../hooks/useLocalStorage';
 import ContactsForm from '../components/ContactsForm';
 import ContactList from '../components/ContactList';
 import Filter from '../components/Filter';
@@ -35,7 +35,7 @@ function App() {
   //     return;
   //   }
 
-  //   setContacts(contacts => [newContact, ...contacts]);
+  //setContacts(contacts => [newContact, ...contacts]);
   // };
 
   // const handleRemoveContact = id => {
