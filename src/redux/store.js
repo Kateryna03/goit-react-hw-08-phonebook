@@ -1,7 +1,7 @@
 // import { createStore, applyMiddleware } from 'redux';
 // import { composeWithDevTools } from 'redux-devtools-extension';
 import { configureStore } from '@reduxjs/toolkit';
-import contactsReducer from './reducer';
+import contactsReducer from './contacts/reducer';
 
 // const store = createStore(
 //   reducer,

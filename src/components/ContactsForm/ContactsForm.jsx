@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addContact } from '../../redux/actions';
+import { addContact } from '../../redux/contacts/actions';
 
 function ContactsForm() {
   const dispatch = useDispatch();
@@ -27,23 +27,22 @@ function ContactsForm() {
     console.log('NAME:', [name]);
   };
 
-  const onAddContact = (name, number, id) => {
-    dispatch(addContact(name, number, id));
+  const onAddContact = (name, number) => {
+    dispatch(addContact(name, number));
   };
 
-  const alreadyExistsContact = name => {
-    return contacts.map(contact => contact.name).includes(name.toLowerCase());
-  };
+  const alreadyExistsContact = contacts.some(
+    contact => contact.name.toLowerCase() === name.toLowerCase(),
+  );
+
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (alreadyExistsContact(name)) {
+    if (alreadyExistsContact) {
       alert(`${name} is already in contacts.`);
       return;
     }
     onAddContact(name, number);
-
-    // onSubmit(name, number);
 
     reset();
   };

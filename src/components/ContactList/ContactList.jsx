@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+//import { connect } from 'react-redux';
 
-import { deleteContact } from '../../redux/actions';
+import { deleteContact } from '../../redux/contacts/actions';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const ContactList = () => {
     );
 
   const finishFilterContacts = filteredContacts(contacts, filter);
-  console.log('ОТФИЛЬТРОВАННЫЕ КОНТАКТЫ', finishFilterContacts);
+  //console.log('ОТФИЛЬТРОВАННЫЕ КОНТАКТЫ', finishFilterContacts);
   return (
     <ul>
       {finishFilterContacts.map(({ id, name, number }) => (
