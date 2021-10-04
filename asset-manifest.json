@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Kateryna03-goit-react-hw-06-phonebook/static/css/main.4d8d620d.chunk.css",
-    "main.js": "/Kateryna03-goit-react-hw-06-phonebook/static/js/main.3df7dc4e.chunk.js",
-    "main.js.map": "/Kateryna03-goit-react-hw-06-phonebook/static/js/main.3df7dc4e.chunk.js.map",
-    "runtime-main.js": "/Kateryna03-goit-react-hw-06-phonebook/static/js/runtime-main.2e3ee644.js",
-    "runtime-main.js.map": "/Kateryna03-goit-react-hw-06-phonebook/static/js/runtime-main.2e3ee644.js.map",
-    "static/js/2.78e38e10.chunk.js": "/Kateryna03-goit-react-hw-06-phonebook/static/js/2.78e38e10.chunk.js",
-    "static/js/2.78e38e10.chunk.js.map": "/Kateryna03-goit-react-hw-06-phonebook/static/js/2.78e38e10.chunk.js.map",
-    "index.html": "/Kateryna03-goit-react-hw-06-phonebook/index.html",
-    "static/css/main.4d8d620d.chunk.css.map": "/Kateryna03-goit-react-hw-06-phonebook/static/css/main.4d8d620d.chunk.css.map",
-    "static/js/2.78e38e10.chunk.js.LICENSE.txt": "/Kateryna03-goit-react-hw-06-phonebook/static/js/2.78e38e10.chunk.js.LICENSE.txt"
+    "main.css": "/goit-react-hw-07-phonebook/static/css/main.4d8d620d.chunk.css",
+    "main.js": "/goit-react-hw-07-phonebook/static/js/main.31e4b32a.chunk.js",
+    "main.js.map": "/goit-react-hw-07-phonebook/static/js/main.31e4b32a.chunk.js.map",
+    "runtime-main.js": "/goit-react-hw-07-phonebook/static/js/runtime-main.54ae5d22.js",
+    "runtime-main.js.map": "/goit-react-hw-07-phonebook/static/js/runtime-main.54ae5d22.js.map",
+    "static/js/2.67aa6575.chunk.js": "/goit-react-hw-07-phonebook/static/js/2.67aa6575.chunk.js",
+    "static/js/2.67aa6575.chunk.js.map": "/goit-react-hw-07-phonebook/static/js/2.67aa6575.chunk.js.map",
+    "index.html": "/goit-react-hw-07-phonebook/index.html",
+    "static/css/main.4d8d620d.chunk.css.map": "/goit-react-hw-07-phonebook/static/css/main.4d8d620d.chunk.css.map",
+    "static/js/2.67aa6575.chunk.js.LICENSE.txt": "/goit-react-hw-07-phonebook/static/js/2.67aa6575.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2e3ee644.js",
-    "static/js/2.78e38e10.chunk.js",
+    "static/js/runtime-main.54ae5d22.js",
+    "static/js/2.67aa6575.chunk.js",
     "static/css/main.4d8d620d.chunk.css",
-    "static/js/main.3df7dc4e.chunk.js"
+    "static/js/main.31e4b32a.chunk.js"
   ]
 }
