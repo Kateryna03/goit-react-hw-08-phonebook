@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 
 import './App.css';
 
-import ContactsForm from '../components/ContactsForm';
-import ContactList from '../components/ContactList';
-import Filter from '../components/Filter';
+import ContactsForm from 'components/ContactsForm';
+import ContactList from 'components/ContactList';
+import Filter from 'components/Filter';
 
 function App() {
   return (
