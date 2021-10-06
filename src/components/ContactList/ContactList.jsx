@@ -4,32 +4,30 @@ import PropTypes from 'prop-types';
 //import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContact, deleteContact } from 'redux/contacts/operations';
-
+import {
+  getLoadind,
+  getFilter,
+  getNormolizedContacts,
+} from 'redux/contacts/selectors';
+import { getContacts } from 'redux/contacts/selectors';
 const ContactList = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
-  const loading = useSelector(state => state.loading);
+  const contacts = useSelector(getNormolizedContacts);
+  const loading = useSelector(getLoadind);
   console.log('!!!!!CONTACTS', contacts);
-  const filter = useSelector(state => state.filter);
+  //const filter = useSelector(getFilter);
   const onDeleteContact = id => {
     dispatch(deleteContact(id));
   };
 
   useEffect(() => dispatch(fetchContact()), [dispatch]);
 
-  const filteredContacts = (contacts, filter) =>
-    contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()),
-    );
-
-  const finishFilterContacts = filteredContacts(contacts, filter);
-  //console.log('ОТФИЛЬТРОВАННЫЕ КОНТАКТЫ', finishFilterContacts);
   return (
     <ul>
       {loading ? (
         <h1>LOADING...</h1>
       ) : (
-        finishFilterContacts.map(({ id, name, number }) => (
+        contacts.map(({ id, name, number }) => (
           <li key={id}>
             <p>{name}</p>
             <p>{number}</p>
