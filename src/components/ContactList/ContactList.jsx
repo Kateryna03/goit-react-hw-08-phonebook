@@ -6,10 +6,10 @@ import { useEffect } from 'react';
 import { fetchContact, deleteContact } from 'redux/contacts/operations';
 import {
   getLoadind,
-  getFilter,
+  //getFilter,
   getNormolizedContacts,
 } from 'redux/contacts/selectors';
-import { getContacts } from 'redux/contacts/selectors';
+//import { getContacts } from 'redux/contacts/selectors';
 const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getNormolizedContacts);
