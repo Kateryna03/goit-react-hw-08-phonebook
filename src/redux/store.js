@@ -10,5 +10,9 @@ import contactsReducer from './contacts/reducer';
 // other store enhancers if any
 // );
 const store = configureStore({ reducer: contactsReducer });
+// const store = configureStore({
+//   reducer: {
+//     contacts: contactsReducer,
+//   },
 
 export default store;

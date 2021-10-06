@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
-
+//import { useDispatch } from 'react-redux';
+//import { useEffect } from 'react';
+//import { fetchContact, deleteContact } from 'redux/contacts/operations';
 import './App.css';
 
 import ContactsForm from 'components/ContactsForm';
@@ -7,6 +9,8 @@ import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
 
 function App() {
+  // const dispatch = useDispatch();
+  // useEffect(() => dispatch(fetchContact()), [dispatch]);
   return (
     <Fragment>
       <div>

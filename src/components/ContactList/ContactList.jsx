@@ -2,17 +2,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
 //import { connect } from 'react-redux';
-
-import { deleteContact } from 'redux/contacts/actions';
+import { useEffect } from 'react';
+import { fetchContact, deleteContact } from 'redux/contacts/operations';
 
 const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts);
-  console.log(contacts);
+  console.log('!!!!!CONTACTS', contacts);
   const filter = useSelector(state => state.filter);
   const onDeleteContact = id => {
     dispatch(deleteContact(id));
   };
+
+  //useEffect(() => dispatch(fetchContact()), [dispatch]);
 
   const filteredContacts = (contacts, filter) =>
     contacts.filter(contact =>
@@ -44,3 +46,8 @@ ContactList.prototype = {
   contacts: PropTypes.array.isRequired,
 };
 export default ContactList;
+// const mapDispatchToProps = dispatch => ({
+//   fetchContactsBD: () => dispatch(fetchContact),
+// });
+
+// export default connect(null, mapDispatchToProps)(ContactList);
