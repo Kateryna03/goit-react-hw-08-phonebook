@@ -8,13 +8,14 @@ import { fetchContact, deleteContact } from 'redux/contacts/operations';
 const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts);
+  const loading = useSelector(state => state.loading);
   console.log('!!!!!CONTACTS', contacts);
   const filter = useSelector(state => state.filter);
   const onDeleteContact = id => {
     dispatch(deleteContact(id));
   };
 
-  //useEffect(() => dispatch(fetchContact()), [dispatch]);
+  useEffect(() => dispatch(fetchContact()), [dispatch]);
 
   const filteredContacts = (contacts, filter) =>
     contacts.filter(contact =>
@@ -25,15 +26,19 @@ const ContactList = () => {
   //console.log('ОТФИЛЬТРОВАННЫЕ КОНТАКТЫ', finishFilterContacts);
   return (
     <ul>
-      {finishFilterContacts.map(({ id, name, number }) => (
-        <li key={id}>
-          <p>{name}</p>
-          <p>{number}</p>
-          <button type="button" onClick={() => onDeleteContact(id)}>
-            delete contact
-          </button>
-        </li>
-      ))}
+      {loading ? (
+        <h1>LOADING...</h1>
+      ) : (
+        finishFilterContacts.map(({ id, name, number }) => (
+          <li key={id}>
+            <p>{name}</p>
+            <p>{number}</p>
+            <button type="button" onClick={() => onDeleteContact(id)}>
+              delete contact
+            </button>
+          </li>
+        ))
+      )}
     </ul>
   );
 };

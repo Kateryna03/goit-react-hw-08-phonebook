@@ -14,16 +14,22 @@ import {
 
 axios.defaults.baseURL = 'http://localhost:3030';
 
-const fetchContact = () => dispatch => {
+const fetchContact = () => async dispatch => {
   dispatch(fetchContactRequest());
-
-  axios
-    .get('/contacts')
-    .then(({ data }) => dispatch(fetchContactSuccess(data)))
-    .catch(error => dispatch(fetchContactError(error)));
+  try {
+    const { data } = await axios.get('/contacts');
+    dispatch(fetchContactSuccess(data));
+  } catch (error) {
+    dispatch(fetchContactError(error.message));
+  }
+  //синхрон
+  //   axios
+  //     .get('/contacts')
+  //     .then(({ data }) => dispatch(fetchContactSuccess(data)))
+  //     .catch(error => dispatch(fetchContactError(error.message)));
 };
 
-const addContact = (name, number) => dispatch => {
+const addContact = (name, number) => async dispatch => {
   const contact = {
     name,
     number,
@@ -31,20 +37,32 @@ const addContact = (name, number) => dispatch => {
   };
 
   dispatch(addContactRequest());
+  try {
+    const { data } = await axios.post('/contacts', contact);
+    dispatch(addContactSuccess(data));
+  } catch (error) {
+    dispatch(addContactError(error));
+  }
 
-  axios
-    .post('/contacts', contact)
-    .then(({ data }) => dispatch(addContactSuccess(data)))
-    .catch(error => dispatch(addContactError(error)));
+  //   axios
+  //     .post('/contacts', contact)
+  //     .then(({ data }) => dispatch(addContactSuccess(data)))
+  //     .catch(error => dispatch(addContactError(error)));
 };
 
-const deleteContact = contactId => dispatch => {
+const deleteContact = contactId => async dispatch => {
   dispatch(deleteContactRequest());
+  try {
+    await axios.delete(`/contacts/${contactId}`);
+    dispatch(deleteContactSuccess(contactId));
+  } catch (error) {
+    dispatch(deleteContactError(error));
+  }
 
-  axios
-    .delete(`/contacts/${contactId}`)
-    .then(() => dispatch(deleteContactSuccess(contactId)))
-    .catch(error => dispatch(deleteContactError(error)));
+  //   axios
+  //     .delete(`/contacts/${contactId}`)
+  //     .then(() => dispatch(deleteContactSuccess(contactId)))
+  //     .catch(error => dispatch(deleteContactError(error)));
 };
 
 // const deleteContact = createAction('contacts/DeleteContact');
