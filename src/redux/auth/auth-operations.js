@@ -135,7 +135,6 @@ const getUser = () => async (dispatch, getState) => {
 
   try {
     const { data } = await axios.get('/users/current');
-
     dispatch(getUserSuccess(data));
   } catch (error) {
     dispatch(getUserError(error.message));

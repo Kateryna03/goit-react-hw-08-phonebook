@@ -14,20 +14,20 @@ import {
 
 //axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 //http://localhost:3030';
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
+// const token = {
+//   set(token) {
+//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+//   },
 
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-  },
-};
+//   unset() {
+//     axios.defaults.headers.common.Authorization = '';
+//   },
+// };
 
 const fetchContact = () => async (dispatch, getState) => {
   dispatch(fetchContactRequest());
 
-  token.set(getState().auth.token);
+  // token.set(getState().auth.token);
   try {
     const { data } = await axios.get('/contacts');
     dispatch(fetchContactSuccess(data));

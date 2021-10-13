@@ -58,6 +58,7 @@ import {
 const initialUserState = {
   name: '',
   email: '',
+  //isGetUser: false,
   // token: null,
   // isLoggedIn: false,
 };
@@ -81,7 +82,7 @@ const isLoggedIn = createReducer(false, {
   //[logInRequest]: () => true,
   [logInSuccess]: () => true,
   [logInError]: () => false,
-
+  ///555555
   //[getUserRequest]: () => true,
   [getUserSuccess]: () => true,
   [getUserError]: () => false,
@@ -98,11 +99,24 @@ const token = createReducer(
     [registerSuccess]: (_, { payload }) => payload.token,
     [logInSuccess]: (_, { payload }) => payload.token,
     [logOutSuccess]: () => null,
-    [getUserSuccess]: (_, { payload }) => payload.token,
+    //[getUserSuccess]: (_, { payload }) => payload.token, - если оставляю при пепезагрузке не из контактов выкидывает на логин
   },
 );
+//убираю флеш при перезагрузке стр
+const refreshingUser = createReducer(
+  false,
+
+  {
+    [getUserRequest]: () => true,
+    [getUserSuccess]: () => false,
+    [getUserError]: () => false,
+    //[getUserSuccess]: (_, { payload }) => payload.token, - если оставляю при пепезагрузке не из контактов выкидывает на логин
+  },
+);
+
 export default combineReducers({
   user,
   isLoggedIn,
   token,
+  refreshingUser,
 });
