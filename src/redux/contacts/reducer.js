@@ -11,7 +11,7 @@ import {
   fetchContactRequest,
   fetchContactSuccess,
   fetchContactError,
-} from './actions';
+} from '../contacts/actions';
 
 // const localStorageContacts = JSON.parse(localStorage.getItem('contacts'));
 

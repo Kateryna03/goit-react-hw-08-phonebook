@@ -1,17 +1,20 @@
+import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
+import { getisLoggedIn } from 'redux/auth/auth-selectors';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ children, ...rest }) => {
+  const isLoggedIn = useSelector(getisLoggedIn);
   return (
-    <Route
-      {...rest}
-      render={props =>
-        localStorage.getItem('idToken') ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to="/" />
-        )
-      }
-    ></Route>
+    <Route {...rest}>
+      {isLoggedIn ? children : <Redirect to="/login" />}
+      {/* render={props => */}
+      {/* //   localStorage.getItem('idToken') ? (
+      //     <Component {...props} />
+      //   ) : (
+      //     <Redirect to="/" />
+      //   )
+      // } */}
+    </Route>
   );
 };
 

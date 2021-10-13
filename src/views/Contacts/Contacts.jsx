@@ -1,44 +1,36 @@
-// import { useEffect, useState } from 'react';
-// import { useLocation, useHistory } from 'react-router-dom';
-// import Searchbar from '../../components/Searchbar/Searchbar';
-// import MovieList from '../../components/MovieList/MovieList';
-// import * as moviesAPI from '../../services/Api';
-//import queryString from 'query-string';
-//const queryString = require('query-string');
-//console.log(location.search);
-// const parsed = queryString.parse(location.search);
-// const stringified = queryString.stringify(parsed);
-// console.log(parsed);
-// location.search = stringified;
-// note that `location.search` automatically prepends a question mark
-//const { search } = location;
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { getLoadind } from 'redux/contacts/selectors';
+import { fetchContact } from 'redux/contacts/operations';
+//import Container from 'components/Container/Container';
+import ContactsForm from 'components/ContactsForm/ContactsForm';
+import ContactList from 'components/ContactList/ContactList';
+import Filter from 'components/Filter/Filter';
+
+const barStyles = {
+  // display: 'flex',
+  // alignItems: 'flex-end',
+  marginBottom: 20,
+};
+
 function Contacts() {
-  // const history = useHistory();
-  // const location = useLocation();
+  const dispatch = useDispatch();
+  const isLoading = useSelector(getLoadind);
 
-  // const { query } = queryString.parse(location.search);
-  // console.log('LOCATIONSEARCH', location.search);
-  // const [movies, setMovies] = useState(null);
-  // const [request, setRequest] = useState(query || '');
-
-  // useEffect(() => {
-  //   if (!request) return;
-  //   moviesAPI
-  //     .fetchSearch(request)
-  //     .then(data => setMovies(data.results))
-  //     .catch(error => console.log(error));
-  // }, [request]);
-
-  // const handleFormSubmit = query => {
-  //  setRequest(query);
-  //   setMovies([]);
-  //   history.push({ ...location, search: `query=${query}` });
-  // };
+  useEffect(() => dispatch(fetchContact()), [dispatch]);
 
   return (
     <>
-      {/* <Searchbar onSubmit={handleFormSubmit}></Searchbar>
-      <MovieList movies={movies}></MovieList> */}
+      <div style={barStyles}>
+        <h1>Phonebook</h1>
+        <ContactsForm />
+
+        <h2>Contacts</h2>
+        <Filter />
+        {isLoading && <h1>Загружаем...</h1>}
+        <ContactList />
+      </div>
     </>
   );
 }
