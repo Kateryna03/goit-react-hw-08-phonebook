@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import React from 'react';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
-import AppBar from 'components/AppBar/AppBar';
+import ButtonAppBar from 'components/AppBar/AppBar';
 import { Switch } from 'react-router-dom';
 import { getRefreshingUser } from 'redux/auth/auth-selectors';
 import { getUser } from 'redux/auth/auth-operations';
@@ -29,7 +29,7 @@ function App() {
   return (
     !isRefreshCurrentUser && (
       <Fragment>
-        <AppBar />
+        <ButtonAppBar />
 
         <Switch>
           <Suspense fallback>

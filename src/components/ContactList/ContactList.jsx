@@ -1,15 +1,23 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
-//import { connect } from 'react-redux';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Stack from '@mui/material/Stack';
+
 import { useEffect } from 'react';
 import { fetchContact, deleteContact } from 'redux/contacts/operations';
-import {
-  getLoadind,
-  //getFilter,
-  getNormolizedContacts,
-} from 'redux/contacts/selectors';
-//import { getContacts } from 'redux/contacts/selectors';
+import { getLoadind, getNormolizedContacts } from 'redux/contacts/selectors';
+
+//import * as React from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+//import Divider from '@mui/material/Divider';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
+
 const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getNormolizedContacts);
@@ -23,21 +31,52 @@ const ContactList = () => {
   useEffect(() => dispatch(fetchContact()), [dispatch]);
 
   return (
-    <ul>
+    // <ul>
+    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {loading ? (
         <h1>LOADING...</h1>
       ) : (
         contacts.map(({ id, name, number }) => (
-          <li key={id}>
-            <p>{name}</p>
-            <p>{number}</p>
-            <button type="button" onClick={() => onDeleteContact(id)}>
-              delete contact
-            </button>
-          </li>
+          <ListItem
+            key={id}
+            //disableGutters
+            alignItems="flex-start"
+            secondaryAction={
+              <Stack direction="row" spacing={2}>
+                <Button
+                  variant="outlined"
+                  startIcon={<DeleteIcon />}
+                  type="button"
+                  onClick={() => onDeleteContact(id)}
+                >
+                  Delete
+                </Button>
+              </Stack>
+            }
+          >
+            <ListItemAvatar>
+              <Avatar alt={name} src="/static/images/avatar/1.jpg" />
+            </ListItemAvatar>
+            <ListItemText
+              marginLeft="20"
+              primary={name}
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    sx={{ display: 'inline' }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    {number}
+                  </Typography>
+                </React.Fragment>
+              }
+            />
+          </ListItem>
         ))
       )}
-    </ul>
+    </List>
   );
 };
 
@@ -49,8 +88,3 @@ ContactList.prototype = {
   contacts: PropTypes.array.isRequired,
 };
 export default ContactList;
-// const mapDispatchToProps = dispatch => ({
-//   fetchContactsBD: () => dispatch(fetchContact),
-// });
-
-// export default connect(null, mapDispatchToProps)(ContactList);

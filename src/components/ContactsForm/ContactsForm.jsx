@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addContact } from 'redux/contacts/operations';
 import { getContacts } from 'redux/contacts/selectors';
+import s from './ContactsForm.module.css';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 function ContactsForm() {
   const dispatch = useDispatch();
@@ -58,13 +62,14 @@ function ContactsForm() {
   return (
     <div>
       <form
+        className={s.form}
         onSubmit={handleSubmit}
         //   onSubmit={(e) => {
         //     e.preventDefault();
         //     console.log(e.currentTarget);
         //   }}
       >
-        <label htmlFor="name">
+        {/* <label htmlFor="name">
           Name
           <input
             type="text"
@@ -89,15 +94,62 @@ function ContactsForm() {
             // title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
             required
           />
-        </label>
-        <button
+        </label> */}
+        {/* <button
           onClick={() => {
             console.log('add contakt');
           }}
           type="submit"
         >
           add contact
-        </button>
+        </button> */}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            '& > :not(style)': { m: 1 },
+          }}
+        >
+          <TextField
+            helperText="Please enter the name"
+            //id="demo-helper-text-aligned"
+            label="Name"
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            id={name}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+            required
+          />
+          <TextField
+            helperText="Please enter the number "
+            //id="demo-helper-text-aligned"
+            label="Number"
+            type="tel"
+            name="number"
+            value={number}
+            onChange={handleChange}
+            id={number}
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+            required
+          />
+        </Box>
+        <Box sx={{ '& button': { m: 1 } }}>
+          <Button
+            variant="outlined"
+            color="primary"
+            size="medium"
+            type="submit"
+            onClick={() => {
+              console.log('add contakt');
+            }}
+          >
+            add contact
+          </Button>
+        </Box>
       </form>
     </div>
   );
@@ -105,82 +157,25 @@ function ContactsForm() {
 
 export default ContactsForm;
 
-/////////CLASS///////////////////////////////////////////////////////
-// import React, { Component } from 'react';
-
-// class ContactsForm extends Component {
-//   state = {
-//     name: '',
-//     number: '',
-//   };
-
-//   handleChange = e => {
-//     const { name, value } = e.currentTarget;
-//     this.setState({ [name]: value });
-//     // console.log("VALUE:", e.currentTarget);
-//     // console.log("NAME:", [name]);
-//   };
-
-//   handleSubmit = e => {
-//     const { name, number } = this.state;
-//     e.preventDefault();
-//     this.props.onSubmit(name, number);
-
-//     this.reset();
-//   };
-
-//   reset = () => {
-//     this.setState({ name: '', number: '' });
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         <form
-//           onSubmit={this.handleSubmit}
-//           //   onSubmit={(e) => {
-//           //     e.preventDefault();
-//           //     console.log(e.currentTarget);
-//           //   }}
-//         >
-//           <label>
-//             Name
-//             <input
-//               type="text"
-//               name="name"
-//               value={this.state.name}
-//               onChange={this.handleChange}
-//               id={this.state.name}
-//               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-//               title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-//               required
-//             />
-//           </label>
-//           <label>
-//             Number
-//             <input
-//               type="tel"
-//               name="number"
-//               value={this.state.number}
-//               onChange={this.handleChange}
-//               id={this.state.number}
-//               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-//               title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-//               required
-//             />
-//           </label>
-//           <button
-//             onClick={() => {
-//               console.log('add contakt');
-//             }}
-//             type="submit"
-//           >
-//             add contact
-//           </button>
-//         </form>
-//       </div>
-//     );
-//   }
+// export default function HelperTextAligned() {
+//   return (
+//     <Box
+//       sx={{
+//         display: 'flex',
+//         alignItems: 'center',
+//         '& > :not(style)': { m: 1 },
+//       }}
+//     >
+//       <TextField
+//         helperText="Please enter your name"
+//         id="demo-helper-text-aligned"
+//         label="Name"
+//       />
+//       <TextField
+//         helperText=" "
+//         id="demo-helper-text-aligned-no-helper"
+//         label="Name"
+//       />
+//     </Box>
+//   );
 // }
-
-// export default ContactsForm;

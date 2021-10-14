@@ -1,9 +1,14 @@
-.wrapper {
+.form {
+  margin: 0 auto;
+  width: 320px;
+
   display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
 }
-.photoWrapper {
-  margin-right: 20px;
-}
-.photo {
-  max-width: 250px;
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
 }
