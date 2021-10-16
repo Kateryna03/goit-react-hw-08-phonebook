@@ -52,7 +52,7 @@ import {
   getUserRequest,
   getUserSuccess,
   getUserError,
-} from '../auth/auth-actions';
+} from './auth-actions';
 
 // const localStorageContacts = JSON.parse(localStorage.getItem('contacts'));
 const initialUserState = {
@@ -113,10 +113,18 @@ const refreshingUser = createReducer(
     //[getUserSuccess]: (_, { payload }) => payload.token, - если оставляю при пепезагрузке не из контактов выкидывает на логин
   },
 );
+//обработка ошибок
+const error = createReducer(null, {
+  [registerError]: (_, { payload }) => payload,
+  [logInError]: (_, { payload }) => payload,
+  [logOutError]: (_, { payload }) => payload,
+  [getUserError]: (_, { payload }) => payload,
+});
 
 export default combineReducers({
   user,
   isLoggedIn,
   token,
   refreshingUser,
+  error,
 });

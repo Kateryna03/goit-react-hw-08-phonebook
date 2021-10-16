@@ -3,6 +3,7 @@ import { createSelector } from '@reduxjs/toolkit';
 export const getLoadind = state => state.loading;
 export const getContacts = state => state.contactsReducer.contacts;
 export const getFilter = state => state.contactsReducer.filter;
+export const getError = state => state.contactsReducer.error;
 
 //композитный(составной)селектор - переношу логику из контактЛист- мемоизирую селектор
 export const getNormolizedContacts = createSelector(

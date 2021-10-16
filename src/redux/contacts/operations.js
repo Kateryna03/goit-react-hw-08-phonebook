@@ -33,6 +33,7 @@ const fetchContact = () => async (dispatch, getState) => {
     dispatch(fetchContactSuccess(data));
   } catch (error) {
     dispatch(fetchContactError(error.message));
+    alert(error.message);
   }
   //синхрон
   //   axios
@@ -54,6 +55,7 @@ const addContact = (name, number) => async dispatch => {
     dispatch(addContactSuccess(data));
   } catch (error) {
     dispatch(addContactError(error));
+    alert(error.message);
   }
 
   //   axios
@@ -69,6 +71,7 @@ const deleteContact = contactId => async dispatch => {
     dispatch(deleteContactSuccess(contactId));
   } catch (error) {
     dispatch(deleteContactError(error));
+    alert(error.message);
   }
 
   //   axios

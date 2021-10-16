@@ -14,7 +14,7 @@ import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 
 const StartPage = lazy(() => import('views/StartPage/StartPage'));
 const RegisterView = lazy(() => import('views/Register/RegisterView'));
-const LoginView = lazy(() => import('views/Login/Login'));
+//const LoginView = lazy(() => import('views/Login/Login'));
 const Contacts = lazy(() => import('views/Contacts/Contacts'));
 
 function App() {
@@ -34,8 +34,12 @@ function App() {
         <Switch>
           <Suspense fallback>
             <PublicRoute path="/" exact component={StartPage} />
-            <PublicRoute restricted path="/register" component={RegisterView} />
-            <PublicRoute restricted path="/login" component={LoginView} />
+            <PublicRoute
+              restricted
+              path="/:authType"
+              component={RegisterView}
+            />
+            {/* <PublicRoute restricted path="/login" component={LoginView} /> */}
             <PrivateRoute path="/contacts">
               <Contacts />
             </PrivateRoute>

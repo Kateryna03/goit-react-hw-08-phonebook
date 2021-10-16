@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { getLoadind } from 'redux/contacts/selectors';
+import { getError, getLoadind } from 'redux/contacts/selectors';
 import { fetchContact } from 'redux/contacts/operations';
 //import Container from 'components/Container/Container';
 import ContactsForm from 'components/ContactsForm/ContactsForm';
@@ -17,6 +17,8 @@ const barStyles = {
 function Contacts() {
   const dispatch = useDispatch();
   const isLoading = useSelector(getLoadind);
+  const ifError = useSelector(getError);
+  console.log('ErrorSelector', ifError);
 
   useEffect(() => dispatch(fetchContact()), [dispatch]);
 
@@ -30,6 +32,7 @@ function Contacts() {
         <Filter />
         {isLoading && <h1>Загружаем...</h1>}
         <ContactList />
+        {ifError && alert(ifError)}
       </div>
     </>
   );

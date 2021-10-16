@@ -1,32 +1,6 @@
 // //import { createAction } from '@reduxjs/toolkit';
 // import { createAsyncThunk } from '@reduxjs/toolkit';
-// import axios from 'axios';
-// import { registerError } from './auth-actions';
 
-// // import {
-// //   addContactRequest,
-// //   addContactSuccess,
-// //   addContactError,
-// //   deleteContactRequest,
-// //   deleteContactSuccess,
-// //   deleteContactError,
-// //   fetchContactRequest,
-// //   fetchContactSuccess,
-// //   fetchContactError,
-// // } from './actions';
-
-// // 'https://connections-api.herokuapp.com;';
-// axios.defaults.baseURL = 'https://connections-api.herokuapp.com;';
-
-// // const fetchContact = () => async dispatch => {
-// //   dispatch(fetchContactRequest());
-// //   try {
-// //     const { data } = await axios.get('/contacts');
-// //     dispatch(fetchContactSuccess(data));
-// //   } catch (error) {
-// //     dispatch(fetchContactError(error.message));
-
-// export { register, logIn, logOut };
 import axios from 'axios';
 import {
   registerRequest,
@@ -65,6 +39,7 @@ const register = credentials => async dispatch => {
     dispatch(registerSuccess(data));
   } catch (error) {
     dispatch(registerError(error.message));
+    alert(error.message);
   }
 };
 // const register = createAsyncThunk('auth/register', async credentials => {
@@ -86,6 +61,7 @@ const login = credentials => async dispatch => {
     dispatch(logInSuccess(data));
   } catch (error) {
     dispatch(logInError(error.message));
+    alert(error.message);
   }
 };
 // const logIn = createAsyncThunk('auth/register', async credentials => {
@@ -106,6 +82,7 @@ const logout = credentials => async dispatch => {
     dispatch(logOutSuccess(data));
   } catch (error) {
     dispatch(logOutError(error.message));
+    alert(error.message);
   }
 };
 // const logOut = createAsyncThunk('auth/register', async credentials => {
@@ -138,6 +115,7 @@ const getUser = () => async (dispatch, getState) => {
     dispatch(getUserSuccess(data));
   } catch (error) {
     dispatch(getUserError(error.message));
+    alert(error.message);
   }
 };
 // const fetchCurrentUser = createAsyncThunk(
