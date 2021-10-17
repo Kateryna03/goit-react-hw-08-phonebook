@@ -24,7 +24,7 @@ import {
 //   },
 // };
 
-const fetchContact = () => async (dispatch, getState) => {
+const fetchContact = () => async dispatch => {
   dispatch(fetchContactRequest());
 
   // token.set(getState().auth.token);

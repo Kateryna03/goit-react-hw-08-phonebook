@@ -39,7 +39,6 @@ function App() {
               path="/:authType"
               component={RegisterView}
             />
-            {/* <PublicRoute restricted path="/login" component={LoginView} /> */}
             <PrivateRoute path="/contacts">
               <Contacts />
             </PrivateRoute>

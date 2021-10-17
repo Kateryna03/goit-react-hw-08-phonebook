@@ -34,7 +34,7 @@ const register = credentials => async dispatch => {
   dispatch(registerRequest());
   try {
     const { data } = await axios.post('/users/signup', credentials);
-    console.log('####register DATA', data);
+    //console.log('####register DATA', data);
     token.set(data.token);
     dispatch(registerSuccess(data));
   } catch (error) {

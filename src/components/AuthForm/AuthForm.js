@@ -110,17 +110,11 @@ export default function AuthForm() {
         </Box>
 
         <Box sx={{ '& button': { m: 1 } }}>
-          {authType === 'register' && (
-            <Button
-              variant="outlined"
-              color="primary"
-              size="small"
-              type="submit"
-            >
-              Sign Up
-            </Button>
-          )}
-          {authType === 'login' && (
+          <Button variant="outlined" color="primary" size="small" type="submit">
+            {authType === 'register' ? 'Sign Up' : 'Login'}
+          </Button>
+
+          {/* {authType === 'login' && (
             <Button
               variant="outlined"
               color="primary"
@@ -129,7 +123,7 @@ export default function AuthForm() {
             >
               Login
             </Button>
-          )}
+          )} */}
         </Box>
       </form>
     </div>

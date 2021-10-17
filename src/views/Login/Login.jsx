@@ -97,7 +97,7 @@ import AuthForm from 'components/AuthForm/AuthForm';
 export default function LoginView() {
   return (
     <>
-      <AuthForm></AuthForm>
+      <AuthForm />
     </>
   );
 }
